@@ -23,7 +23,7 @@ def module_main():
 
     try:
         consumer = KafkaConsumer(
-            getenv("TOPIC"),
+            topics=getenv("TOPIC"),
             bootstrap_servers=[server.strip() for server in getenv("BOOTSTRAP_SERVERS").split(',')],
             client_id=getenv("CLIENT_ID"),
             group_id=getenv("GROUP_ID"),
