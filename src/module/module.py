@@ -33,7 +33,7 @@ def module_main():
         )
 
         for message in consumer:
-            log.debug(f"Input data: {message.value}")
+            log.debug(f"Input data: {message.value}. Topic: {message.topic}. Partition: {message.partition}. Offset: {message.offset}")
 
             # send data to the next module
             send_error = send_data(message.value)
