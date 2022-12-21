@@ -1,12 +1,18 @@
 version: "3.0"
 services:
-  boilerplate:
+  kafka-consumer:
     build:
       context: ../
       dockerfile: docker/Dockerfile
     environment:
-      MODULE_NAME: "boilerplate"
+      MODULE_NAME: "kafka-consumer"
       MODULE_TYPE: "Input"
       EGRESS_URLS: "https://testdockercompose.free.beeceptor.com"
+      TOPIC: "kafka-topic"
+      BOOTSTRAP_SERVERS: "localhost:9092"
+      CLIENT_ID: "kafka-consumer-module"
+      GROUP_ID: "my-group"
+      AUTO_OFFSET_RESET: "earliest"
+      ENABLE_AUTO_COMMIT: "True"
     ports:
       - 80:80

@@ -1,47 +1,72 @@
-displayName: 'Module Boilerplate'       # Display name for the module that will be displayed in the UI.
-moduleName: 'module-boilerplate'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
-description: 'This is module boilerplate description.'       # Module description that will be displayed in the UI.
-versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
-isPublic: true                          # Boolean value that indicates if the module is Public or Private.
-categories:                             # Array of category that will be used to group the module in the UI.
-  - 'CATEGORY_1'
-  - 'CATEGORY_2'
-type: 'Input'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
+displayName: 'Kafka Consumer'
+moduleName: 'kafka-consumer'
+description: 'Consumer to connect with Apache Kafka.'
+versionName: 'v1.0.0'
+isPublic: true
+categories:
+  - 'Ingress'
+type: 'Input'
 image:
-  name: 'weevenetwork/module-boilerplate'     # Image name from the docker registry.
-  tag: 'latest'                               # Image tag from the docker registry.
-  homepage: 'https://hub.docker.com/weevenetwork/module-boilerplate'      # Image homepage from the docker registry.
-repository: 'https://github.com/weeve-modules/python-ingress-module-boilerplate'     # Repository URL to source code.
-envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
-  - name: Setting 1                   # name of the field to be displayed on the UI.
-    key: ENVIRONMENT_1                # key to set in the environment variables.
-    description: Module setting 1     # Description/helper text for the field.
-    value: ''                         # Value to be set in the environment variables.
-    type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    options:                          # Options for the field if it is a select or multiple select. An array of string options
-      - option_A
-      - option_B
-      - option_C
-    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-      - key:                          # key of the dependency
-        value:                        # value of the dependency
-  - name: Setting 2
-    key: ENVIRONMENT_2
-    description: Module setting 2
-    value: ''
-    type: 'number'
-    dependencies:
-      - key: ENVIRONMENT_1
-        value: option_B
-ports:                                  # Array of ports that will be exposed by the module.
-  - container: 8080                     # Port number from the container.
-    host: 8080                          # Port number to map on the host.
-mounts:
-  - container: '/data'                  # Mount path from the container.
-    host: '/data'                       # Mount path to map on the host.
-tags:                                   # Array of tags.
+  name: 'weevenetwork/kafka-consumer'
+  tag: 'v1.0.0'
+  homepage: 'https://hub.docker.com/r/weevenetwork/kafka-consumer'
+repository: 'https://github.com/weeve-modules/kafka-consumer'
+envs:
+  - name: Topic
+    key: TOPIC
+    description: Kafka topic to subscribe to.
+    value: 'your-kafka-topic'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Bootstrap Servers
+    key: BOOTSTRAP_SERVERS
+    description: List of comma (,) separated Kafka bootstrap servers that the consumer should contact to bootstrap initial cluster metadata.
+    value: 'localhost:9092, localhost:9090'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Client ID
+    key: CLIENT_ID
+    description: A name for this client. This string is passed in each request to servers and can be used to identify specific server-side log entries that correspond to this client.
+    value: 'your-client-id'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Group ID
+    key: GROUP_ID
+    description: The name of the consumer group to join for dynamic partition assignment, and to use for fetching and committing offsets.
+    value: 'my-group'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Auto Offset Reset
+    key: AUTO_OFFSET_RESET
+    description: "A policy for resetting offsets 'earliest' will move to the oldest available message, 'latest' will move to the most recent."
+    value: 'earliest'
+    type: 'select'
+    options:
+        - 'earliest'
+        - 'latest'
+    dependencies: []
+  - name: Enable Auto Commit
+    key: ENABLE_AUTO_COMMIT
+    description: If True, the consumer offset will be periodically committed in the background.
+    value: 'True'
+    type: 'select'
+    options:
+        - 'True'
+        - 'False'
+    dependencies: []
+ports: []
+envPorts: []
+mounts: []
+envMounts: []
+devices: []
+envDevices: []
+tags:
   - 'Python'
   - 'Input'
-  - 'Boilerplate'
-  - 'Boilerplate 1.0.0'
-icon: 'https://some.url/to/icon.png'    # Icon URL that will be displayed in the UI.
+  - 'Kafka'
+  - 'Consumer'
+icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_kafka_input.png'    # Icon URL that will be displayed in the UI.
