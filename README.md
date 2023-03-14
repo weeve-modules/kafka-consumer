@@ -3,7 +3,7 @@
 |                |                                       |
 | -------------- | ------------------------------------- |
 | Name           | Kafka Consumer                           |
-| Version        | v1.0.0                                |
+| Version        | v1.0.1                                |
 | DockerHub | [weevenetwork/kafka-consumer](https://hub.docker.com/r/weevenetwork/kafka-consumer) |
 | Authors        | Jakub Grzelak                    |
 

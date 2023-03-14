@@ -1,14 +1,14 @@
 displayName: 'Kafka Consumer'
 moduleName: 'kafka-consumer'
 description: 'Consumer to connect with Apache Kafka.'
-versionName: 'v1.0.0'
+versionName: 'v1.0.1'
 isPublic: true
 categories:
   - 'Ingress'
 type: 'Input'
 image:
   name: 'weevenetwork/kafka-consumer'
-  tag: 'v1.0.0'
+  tag: 'v1.0.1'
   homepage: 'https://hub.docker.com/r/weevenetwork/kafka-consumer'
 repository: 'https://github.com/weeve-modules/kafka-consumer'
 envs:
